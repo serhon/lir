@@ -1,14 +1,15 @@
 /*
 *	Life-Including-Rules for Web - 2D cellular automaton, part of which defines its birth/death rules
-*	v0.2.0, 2021.03.07
+*	v0.2.0, 2021.03.08
 */
 
 
 // Primary parameters
-var lirVersionStr = "0.2.0";
+var lirNameVerStr = "Life-Including-Rules v0.2.0 for Web";
+var lirUrlStr = "https://github.com/serhon/lir";
 
 var lirFieldSizeLog = 6;
-var lirCellSize = 12;
+var lirCellSize = 11;
 var lirFramerate = 10;
 var lirMaxFramerate = 60;
 var lirShowGrid = true;
@@ -26,16 +27,14 @@ var lirRainbowColors = new Array(
 	new Array(0xF0, 0x00, 0x00)); // red
 
 var lirControlsHelpStr = "<i>Controls</i><br><br>0: pause to edit<br>1&ndash;9: speed<br>M: max speed<br>Left-click (speed=0): edit<br>CTRL: protect (freeze)<br>SHIFT: edit 5x5 instead of 1x1<br>Double-click (speed&gt;0): reset<br>G (speed&gt;0): reset and add glider"
-var lirRulesAreaHelpStr = "<i>Rules Area</i><br><br>Left column defines birth rules (dead cell &mdash; active rule), right column defines death rules (alive cell &mdash; active rule).<br>Initially it is standard Conway's Life: B3/D0145678."
-
-var lirTextColor = "#000000";
-var lirBackgroundColor = "#ffffff";
+var lirRulesAreaHelpStr = "<i>Rules Area</i><br><br>Left column defines birth rules (dead cell &mdash; active rule) and right column defines death rules (alive cell &mdash; active rule) for 0 (top) to 8 (bottom) alive neighbours.<br>Initially it is standard Conway's Life: B3/D0145678."
 
 var lirControlsWidth = 384;
-var lirControlsLeftPadding = 64;
+var lirControlsLeftPadding = 48;
 
 var lirControlsFontSize = 20;
-var lirHelpFontSize = 17;
+var lirHelpFontSize = 18;
+var lirCredFontSize = 12;
 
 // Derived parameters
 
@@ -73,10 +72,10 @@ var lirSyncTimerID;
 var lirHTML = "";
 
 lirHTML += "<div style=\"float: left;\">";
-lirHTML += "<canvas id=\"lir_canvas\" width=\"" + lirCanvasSize + "\" height=\"" + lirCanvasSize + "\" style=\"width: " + lirCanvasSize + "px; height: " + lirCanvasSize + "px;\"></canvas>"; // there are "native" and "on-page" width & height of canvas... ensuring they're equal
+lirHTML += "<canvas id=\"lir_canvas\" width=\"" + lirCanvasSize + "\" height=\"" + lirCanvasSize + "\" style=\"width: " + lirCanvasSize + "px; height: " + lirCanvasSize + "px; box-shadow: 0 0 8px #000000;\"></canvas>"; // there are "native" and "on-page" width & height of canvas... ensuring they're equal
 lirHTML += "</div>";
 
-lirHTML +=  "<div style=\"float: left; width: " + lirControlsWidth + "px; padding-left: " + lirControlsLeftPadding + "px; padding-bottom: 8px; color: " + lirTextColor + "; background-color: " + lirBackgroundColor + "; font-size: " + lirControlsFontSize + "px;\">";
+lirHTML +=  "<div style=\"float: left; width: " + lirControlsWidth + "px; padding-left: " + lirControlsLeftPadding + "px;\">";
 
 lirHTML += "<form><table width=" + (lirControlsWidth - lirControlsLeftPadding) + "><tr><td>";
 
@@ -86,11 +85,11 @@ lirHTML += "<tr><td><p style=\"font-size: " + lirControlsFontSize + "px; margin:
 
 lirHTML += "<tr><td><p style=\"font-size: " + lirControlsFontSize + "px; margin: 8px auto 0px auto;\">Speed: &nbsp; <input type=\"range\" id=\"lirSliderFramerate\" title=\"Generations per second (roughly)\n0 to pause and edit\" min=\"0\" max=\"" + lirMaxFramerate + "\" step=\"1\" value=\"" + lirFramerate + "\" style=\"width: 120px;\" onChange=\"lirFramerateChange()\" /> &nbsp;&nbsp; <label id=\"lirLabelFramerate\">" + lirFramerate + "</label></p></td></tr>";
 
-lirHTML += "<tr><td><hr><hr><p style=\"font-size: " + lirHelpFontSize + "px; margin: 8px auto 0px auto;\">" + lirControlsHelpStr + "</p></td></tr>";
+lirHTML += "<tr><td><hr><p style=\"font-size: " + lirHelpFontSize + "px; margin: 8px auto 0px auto;\">" + lirControlsHelpStr + "</p>";
 
-lirHTML += "<tr><td><hr><p style=\"font-size: " + lirHelpFontSize + "px; margin: 8px auto 0px auto;\">" + lirRulesAreaHelpStr + "</p></td></tr>";
+lirHTML += "<hr><p style=\"font-size: " + lirHelpFontSize + "px; margin: 8px auto 0px auto;\">" + lirRulesAreaHelpStr + "</p>";
 
-lirHTML += "<tr><td><hr><p style=\"font-size: " + lirHelpFontSize + "px; margin: 8px auto 0px auto;\">Version " + lirVersionStr + "</p></td></tr>";
+lirHTML += "<hr><p style=\"font-size: " + lirCredFontSize + "px; margin: 8px auto 0px auto;\">" + lirNameVerStr + "<br><a href=\"" + lirUrlStr + "\">" + lirUrlStr + "</a></p></td></tr>";
 
 lirHTML += "</table></form></div>";
 

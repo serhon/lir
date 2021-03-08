@@ -1,24 +1,39 @@
 <head>
 	<meta charset="UTF-8">
-	<title>Life-Including-Rules</title>
+	<title>Life-Including-Rules [draft]</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+  	<style>
+    	body {
+      		font-family: "Computer Modern Serif", serif;
+      		font-size: 20px;
+    	}
+  	</style>
 	<script>MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};</script>
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-	<h1>Life-Including-Rules</h1>
-	<p>2D cellular automaton, part of which defines its birth/death rules.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font size="-1"><i>Hint: press G.</i></font></p>
+	<h1>Life-Including-Rules [draft]</h1>
+
+	<hr>
+
+	<p>2D cellular automaton, part of which defines its birth/death rules.&emsp;&emsp;&ensp;<font size="-1"><i>Hint: press G</i></font></p>
 
 	<script src="life_inc_rules-0.2.0.js"> type="text/javascript"></script>
 
+	<hr>
+
+	<p align="justify" style="font-size: 90%;"><b>Preabstract.</b> We consider 2D cellular automaton with closed torus-like space and 8-neighbour cells, similar to classical Conway's Life, where 9+9 birth/death rules for the whole space are not fixed, but change accordingly to state of 18 selected cells. These cells either follow the very rules they define, or are &ldquo;protected&rdquo; from changes to avoid some degenerate behaviours. Oscillating patterns were observed in some cases... Total extinction is possible as well...</p>
+
 	<h2>Introduction...</h2>
-	<p><i>...under construction.</i> Someday here may be formulae like $\lim\limits_{n \rightarrow \infty} \left( 1 + \frac{1}{n} \right)^n = e$, which now simply tests MathJax.</p>
+	<p align="justify"><i>...under construction.</i> Someday here may be formulae like $\lim\limits_{n \rightarrow \infty} \left( 1 + \frac{1}{n} \right)^n = e$, which now simply tests MathJax.</p>
 
 	<h2>References</h2>
-	<ol>
-		<li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">en.wikipedia.org/wiki/Conway's_Game_of_Life</a></li>
-		<li>T.P. Pavlic, A.M. Adams, P.C.W. Davies, S.I. Walker: Self-referencing cellular automata: A model of the evolution of information control in biological systems. ALIFE 14, 2014. <a href="https://doi.org/10.7551/978-0-262-32621-6-ch083" target="_blank">doi:10.7551/978-0-262-32621-6-ch083</a></li>
+	<ol style="font-size: 90%;">
+		<li id="refWikiLife"><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">en.wikipedia.org/wiki/Conway's_Game_of_Life</a></li>
+		<li id="refGolly"><a href="http://golly.sourceforge.net/" target="_blank">golly.sourceforge.net</a></li>
+		<li id="refPavlic2014">T.P. Pavlic, A.M. Adams, P.C.W. Davies, S.I. Walker: Self-referencing cellular automata: A model of the evolution of information control in biological systems. ALIFE 14, 2014. <a href="https://doi.org/10.7551/978-0-262-32621-6-ch083" target="_blank">doi:10.7551/978-0-262-32621-6-ch083</a></li>
 		<li>...</li>
 	</ol>
 
